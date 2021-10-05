@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Jason file data to Table</title>
+</head>
+<body>
+    
+    <section class="conainer-box">
+        
+        <div class="table">
+            <h1>Table cretaed from jason file data</h1>
+            <input type="text" id="query" class="query" placeholder=" search name">
+            <div id="tableOutput"></div>
+            
+        </div>
+
+    </section>
+    <script>
+        
+        
+        window.addEventListener('DOMContentLoaded', createTable);
+        const output = document.getElementById('tableOutput');
+        const searchInput=document.getElementById('query');
+        searchInput.addEventListener('input', filterFunction);
+
+
+
+        //creation of table from jason data using fetch method   
+        function createTable(){
+                
+            fetch("./assignment.json").then(response=>response.json())
+            .then(info=>{
+            console.log(info,'Nira')
+            fetchData=info.data;
+            console.log(fetchData,'hello')
+            
+            const tableHeader = Object.keys(fetchData[0]);
+            console.log(tableHeader,'this is header of table')
+
+
+            if (fetchData.length > 0) {
+                let temp=`<table class="information-table"> <thead> <tr class="secondTbleRow">`;
+                tableHeader.forEach( header=> temp+= `<th>${header.toUpperCase()}</th>`);
+                temp +=`</thead></tr>`
+                fetchData.forEach((tableRow) => {
+             
+                temp += `<tbody>
+                            <tr class="row">
+                                <td>${tableRow.key}</td>
+                                <td>${tableRow.name}</td>
+                                <td>${tableRow.age}</td>
+                                <td>${tableRow.address}</td>
+                                <td>${tableRow.tags}</td>
+                            </tr>
+                        </tbody>`
+                            
+                });
+                temp+=`</table>`
+                output.innerHTML = temp;
+            }
+        
+            })
+            
+        }
+
+
+        
+    
+        //filter function to make filter search on data fetched from api
+        function filterFunction(event){
+
+            let result;
+            temp='';
+
+            fetch("./assignment.json").then(response=>response.json())
+            .then(info=>{
+            fetchData=info.data;
+            const tableHeader = Object.keys(fetchData[0]);
+            
+
+            result = fetchData.filter(employee =>
+            employee.name.toLowerCase().includes(event.target.value.toLowerCase())
+            
+            );
+            console.log(result,'this is result')
+           
+
+                if(result.length>0){
+                    temp=`<table class="information-table"> <thead> <tr>`;
+                    tableHeader.forEach( header=> temp+= `<th>${header.toUpperCase()}</th>`);
+                    temp +=`</thead></tr>`
+                    result.forEach((tableRow) => {
+             
+                    temp += `<tbody>
+                            <tr class="row">
+                                <td>${tableRow.key}</td>
+                                <td>${tableRow.name}</td>
+                                <td>${tableRow.age}</td>
+                                <td>${tableRow.address}</td>
+                                <td>${tableRow.tags}</td>
+                            </tr>
+                           </tbody>`
+                            
+                    });
+                        temp+=`</table>`   
+                }
+                else{
+                    console.log("NO DATA TO SHOW");
+                    temp=`<div class="message">Search not found</div>`; 
+                }
+                output.innerHTML= temp;
+                })
+            
+            }
+    
+    </script>
+    
+</body>
+</html>

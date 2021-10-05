@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color:#F5F5F5;
+    width: 100%;
+}
+
+.conainer-box{
+    width: 1170px;
+    height: 530px;
+    background-color: white;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.table{
+    text-align: center;
+}
+h1{
+    padding-bottom: 40px;
+    padding-top: 20px;
+}
+
+.query{
+    height: 30px;
+    width: 780px;
+    border-radius: 4px;
+    border: 2px solid #1E90FF ;
+    background-color:white;
+    font-size: 16px; 
+    margin-bottom: 10px; 
+}
+
+.query:focus { 
+      outline: none !important;
+}
+
+
+.message{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color:red;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    height: 30px;
+    width: 780px;
+    border-radius: 5px;
+}
+
+.information-table tbody tr:hover{
+    font-weight: 400;
+    color:green;
+}
+.information-table{
+    border-collapse: collapse;
+    margin: auto;
+    font-size: 16px;
+    width: 780px;
+    overflow: hidden;
+    
+}
+
+.information-table thead tr{
+    background-color:#1E90FF;
+    color: white; 
+    font-weight: bold;
+    font-style: normal;
+}
+
+.information-table th,
+.information-table td{
+    padding: 12px 15px;  
+}
+
+.information-table tbody tr{
+    border-bottom: 1px solid snow;
+}
+
+.information-table tbody tr{ 
+    background-color:whitesmoke;
+}
+
+
